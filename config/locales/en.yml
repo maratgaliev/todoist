@@ -1,0 +1,5 @@
+en:
+  errors:
+    base: "Error, please try again later"
+    tasks:
+      not_found: "Task not found"
