@@ -1,7 +1,7 @@
 class Api::V1::BaseController < ApplicationController
   private
 
-  def api_response(data)
+	def api_response(data)
     render json: data
   end
 
