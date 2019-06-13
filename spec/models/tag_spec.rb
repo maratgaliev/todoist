@@ -1,5 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe Tag, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe Tag, type: :model do
+  it 'has many tasks' do
+    relation = described_class.reflect_on_association(:tasks)
+    expect(relation.macro).to eq :has_many
+	end
+	
+	it 'has many taggings' do
+    relation = described_class.reflect_on_association(:taggings)
+    expect(relation.macro).to eq :has_many
+  end
 end

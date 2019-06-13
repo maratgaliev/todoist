@@ -1,5 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe Tagging, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe Tagging, type: :model do
+  it 'belongs to task' do
+    relation = described_class.reflect_on_association(:task)
+    expect(relation.macro).to eq :belongs_to
+	end
+	
+	it 'belongs to tag' do
+    relation = described_class.reflect_on_association(:tag)
+    expect(relation.macro).to eq :belongs_to
+  end
 end
