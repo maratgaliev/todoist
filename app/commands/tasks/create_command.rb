@@ -1,7 +1,7 @@
 class Tasks::CreateCommand < BaseCommand
   step :validate
   step :persist
-  def validate(params:)
+	def validate(params:)
     form = Tasks::Form.call(params)
 
     if form.success?

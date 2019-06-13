@@ -19,7 +19,7 @@ class Task < ApplicationRecord
 	def tags=(array)
 		array.each do |tag|
 			tag = Tag.where(name: tag.strip).first_or_create!
-			Tagging.where(tag: tag, task: self).first_or_create!
+			self.tags << tag
 		end
   end
 end

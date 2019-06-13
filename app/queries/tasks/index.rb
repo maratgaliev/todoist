@@ -1,6 +1,8 @@
 class Tasks::Index
-  include Dry::Transaction
-  PER_PAGE = 10
+	include Dry::Transaction
+	
+	PER_PAGE = 10
+	
   step :tasks_scope
   step :paginate
 

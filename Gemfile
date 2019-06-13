@@ -31,15 +31,15 @@ end
 group :test do
   gem 'factory_bot_rails', '~> 4.0'
   gem 'shoulda-matchers', '~> 3.1'
-  gem 'database_cleaner'
+	gem 'database_cleaner'
+	gem 'rspec-its'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'rspec-rails', '~> 3.5'
-gem 'json_spec'
 gem 'rack-cors'
 
-gem 'dry-validation'
+gem 'dry-validation', '0.13.1'
 gem 'dry-transaction'
 gem 'will_paginate'

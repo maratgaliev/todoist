@@ -1,4 +1,3 @@
-
 class BaseCommand
   include Dry::Transaction
 
