@@ -9,9 +9,10 @@ describe Tasks::CreateCommand do
       expect(result.success.class).to eq(Task)
 		end
 		
-		it 'should return created task' do
+		it 'should return created task with tags' do
 			hash = {"title": "Do Homework", "tags": ["one", "two"]}
 			result = command.call(params: hash)
+			expect(result.success.tags.size).to eq(2)
       expect(result.success.class).to eq(Task)
     end
 

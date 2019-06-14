@@ -11,6 +11,12 @@ describe Tasks::Index, type: :query do
 				expect(result.success.first.class).to eq Task
 				expect(result.success.size).to eq 2
 			end
+
+			it 'should get paginated array' do
+				11.times {FactoryBot.create(:task)}
+				result = task_query.call(params: {})
+				expect(result.success.size).to eq 10
+			end
 		end
 	end
 end

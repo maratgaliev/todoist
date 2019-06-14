@@ -1,8 +1,8 @@
-class Tasks::CreateCommand < BaseCommand
+class Tags::CreateCommand < BaseCommand
   step :validate
   step :persist
 	def validate(params:)
-    form = Tasks::Form.call(params)
+    form = Tags::Form.call(params)
 
     if form.success?
       Success(params: form.to_h)
@@ -11,10 +11,10 @@ class Tasks::CreateCommand < BaseCommand
     end
   end
 
-	def persist(params:)
-    task = Task.new(params)
-    if task.save
-      Success(task)
+  def persist(params:)
+    tag = Tag.new(params)
+    if tag.save
+      Success(tag)
     else
       Failure(error(I18n.t('errors.base')))
     end
