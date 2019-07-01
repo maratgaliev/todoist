@@ -19,7 +19,6 @@ describe Api::V1::TasksController, type: :request do
 				expect(Task.count).to eq 2
 			end
 		end
-		
 	end
 	
 	describe 'POST /tasks' do
@@ -51,12 +50,13 @@ describe Api::V1::TasksController, type: :request do
 	end
 	
 	describe 'PATCH /tasks' do
-		let(:title) { 'New task title' }
+    let(:title) { 'New task title' }
+    let(:tags) { ["One", "Two"] }
 		let!(:task) { FactoryBot.create(:task) }
 
     before do
       headers = { 'Content-Type' => 'application/json' }
-			params = {"data": { "attributes": {"title": title}} }
+			params = {"data": { "attributes": {"title": title, "tags": tags }} }
       patch "/api/v1/tasks/#{task.id}", headers: headers, params: params.to_json
     end
 
@@ -72,7 +72,10 @@ describe Api::V1::TasksController, type: :request do
       its(:status) { is_expected.to eq 200 }
 			its(:body) { is_expected.to match /task/ }
 			it 'should only update task' do
-				expect(Task.count).to eq 1
+        expect(Task.count).to eq 1
+        expect(Task.first.tags[0].title).to eq 'One'
+        expect(Task.first.tags[1].title).to eq 'Two'
+        expect(Task.first.tags.count).to eq 2
 				expect(Task.first.title).to eq 'New task title'
 			end
     end
